@@ -7,11 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "darkaonline/l5-swagger": "^11.0",
+        "darkaonline/l5-swagger": "^11.1",
+        "firebase/php-jwt": "^7.1",
         "laravel/framework": "^13.8",
+        "laravel/sanctum": "*",
         "laravel/tinker": "^3.0",
         "mll-lab/laravel-graphql-playground": "^1.1",
-        "nuwave/lighthouse": "^6.67"
+        "nuwave/lighthouse": "^6.67",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "15.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

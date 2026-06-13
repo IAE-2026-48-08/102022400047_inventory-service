@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessInventoryMessage; // Pastikan import ini ada di atas
 
 class InventoryController extends Controller
 {
@@ -52,5 +53,23 @@ class InventoryController extends Controller
                 'processed_at' => now()->toDateTimeString()
             ]
         ], 201);
+    }
+
+    // Metode Baru untuk Dispatch ke Queue
+    public function store(Request $request)
+    {
+        // Validasi data yang masuk
+        $data = $request->validate([
+            'inventory_id' => 'required|integer',
+            'quantity' => 'required|integer',
+        ]);
+
+        // Mengirim data ke antrean (RabbitMQ) tanpa menunggu proses selesai
+        // Ini membuat API Anda merespons dengan sangat cepat
+        ProcessInventoryMessage::dispatch($data);
+
+        return response()->json([
+            'message' => 'Data sedang diproses di antrean!',
+        ], 202);
     }
 }
