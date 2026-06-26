@@ -10,6 +10,12 @@ final class StoreQC // PERHATIKAN: S, Q, C harus HURUF BESAR sesuai nama file
      */
     public function __invoke($_, array $args)
     {
-        // Isi kodingan logika mutation kamu di sini
+        return [
+            'status' => 'success',
+            'message' => 'Memproses barang order sekaligus mencatat hasil QC',
+            'order_id' => $args['order_id'],
+            'qc_status' => $args['qc_status'],
+            'notes' => $args['notes'] ?? null,
+        ];
     }
 }

@@ -9,6 +9,7 @@ class AuditLog extends Model
     protected $fillable = [
         'inventory_id',
         'quantity',
+        'receipt_number',
         'status',
     ];
 }

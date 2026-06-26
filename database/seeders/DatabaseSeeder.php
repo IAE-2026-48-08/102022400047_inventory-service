@@ -15,11 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Seed user (bawaan)
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // 1. Seed user (bawaan) - menggunakan firstOrCreate agar tidak error jika sudah ada
+        User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Test User',
+                'password' => bcrypt('password'),
+            ]
+        );
 
         // 2. TAMBAHKAN BARIS INI untuk memanggil InventorySeeder
         $this->call([

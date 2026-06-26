@@ -9,6 +9,9 @@ class InventorySeeder extends Seeder
 {
     public function run()
     {
+        // Kosongkan tabel terlebih dahulu untuk menghindari duplikasi data
+        DB::table('inventories')->truncate();
+
         DB::table('inventories')->insert([
             [
                 'nama_barang' => 'Laptop ASUS',
