@@ -11,6 +11,11 @@ use OpenApi\Annotations as OA;
  * description="Dokumentasi API Inventory Service"
  * )
  *
+ * @OA\Server(
+ * url=L5_SWAGGER_CONST_HOST,
+ * description="Inventory Service Server"
+ * )
+ *
  * @OA\SecurityScheme(
  * securityScheme="bearerAuth",
  * type="http",

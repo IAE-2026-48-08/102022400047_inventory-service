@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
     description: "Dokumentasi Kontrak Tugas 2 - Ekosistem Fulfillment - Inventory Service (Dhika)"
 )]
 #[OA\Server(
-    url: "http://127.0.0.1:8000",
+    url: L5_SWAGGER_CONST_HOST,
     description: "Localhost Server Utama"
 )]
 
