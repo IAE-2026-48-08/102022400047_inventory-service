@@ -110,6 +110,25 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
+        // 1. Jika request memiliki key 'nama_barang', anggap sebagai pembuatan barang langsung (REST standar)
+        if ($request->has('nama_barang')) {
+            $data = $request->validate([
+                'nama_barang' => 'required|string',
+                'stok' => 'required|integer',
+                'status_qc' => 'nullable|string',
+                'kondisi_barang' => 'nullable|string',
+            ]);
+
+            $item = Inventory::create($data);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Berhasil menambahkan barang baru ke inventaris',
+                'data' => new InventoryResource($item)
+            ], 201);
+        }
+
+        // 2. Jika request memiliki key untuk pemrosesan antrean (Modul 3)
         $data = $request->validate([
             'inventory_id' => 'required|integer',
             'quantity' => 'required|integer',
@@ -118,6 +137,7 @@ class InventoryController extends Controller
         ProcessInventoryMessage::dispatch($data);
 
         return response()->json([
+            'status' => 'success',
             'message' => 'Data sedang diproses di antrean!',
         ], 202);
     }

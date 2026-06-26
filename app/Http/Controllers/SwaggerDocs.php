@@ -88,4 +88,32 @@ class SwaggerDocs
         ]
     )]
     public function processQC() {}
+
+    // ==========================================
+    // ENDPOINT 4: Tambah Barang Baru (POST)
+    // ==========================================
+    #[OA\Post(
+        path: "/api/v1/inventories",
+        summary: "Menambahkan barang baru ke inventaris",
+        tags: ["Inventory Management"],
+        security: [["ApiKeyAuth" => []]], // Mengunci menggunakan ApiKeyAuth
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                type: "object",
+                required: ["nama_barang", "stok"],
+                properties: [
+                    new OA\Property(property: "nama_barang", type: "string", example: "Keyboard Mechanical"),
+                    new OA\Property(property: "stok", type: "integer", example: 25),
+                    new OA\Property(property: "status_qc", type: "string", example: "PASSED"),
+                    new OA\Property(property: "kondisi_barang", type: "string", example: "Baru")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 201, description: "Barang berhasil ditambahkan"),
+            new OA\Response(response: 401, description: "Unauthenticated / API Key Salah atau Tidak Ada")
+        ]
+    )]
+    public function storeInventory() {}
 }
