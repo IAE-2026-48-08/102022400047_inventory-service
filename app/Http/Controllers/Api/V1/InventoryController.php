@@ -137,7 +137,7 @@ class InventoryController extends Controller
 
         try {
             $receiptNumber = $this->soapService->sendAudit(
-                'TEAM-25', 
+                'TEAM-03', 
                 'UpdateInventory', 
                 json_encode($data)
             );

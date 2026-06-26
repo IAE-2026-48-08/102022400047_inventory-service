@@ -15,11 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // 1. Seed user (bawaan)
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        // 2. TAMBAHKAN BARIS INI untuk memanggil InventorySeeder
+        $this->call([
+            InventorySeeder::class,
         ]);
     }
 }

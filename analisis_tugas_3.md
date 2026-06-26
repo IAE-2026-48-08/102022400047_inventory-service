@@ -7,7 +7,7 @@ cat > analisis_tugas_3.md << 'EOF'
 
 ---
 
-## 1. Penjelasan Transaksi Kritis
+## 1. Penjelasan Transaksi
 
 ### A. Transaksi Penting — SOAP Audit
 
@@ -15,7 +15,7 @@ Pada sistem inventory service yang saya kerjakan, transaksi yang saya
 pilih sebagai transaksi kritis adalah **Update Stok Inventory**
 (`POST /api/inventory`).
 
-Alasan saya memilih transaksi ini sebagai transaksi kritis adalah:
+Alasan saya memilih transaksi ini sebagai transaksi adalah:
 
 1. **Mengubah State Data Secara Permanen** — Ketika stok barang diubah,
    data di database langsung berubah dan berdampak ke seluruh sistem.

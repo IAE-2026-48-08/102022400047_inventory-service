@@ -2,8 +2,10 @@ type Inventory {
     id: ID!
     nama_barang: String!
     stok: Int!
-    status_qc: String!
-    kondisi_barang: String!
+    status_qc: String
+    kondisi_barang: String
+    created_at: String
+    updated_at: String
 }
 
 type QCResponse {
@@ -15,8 +17,9 @@ type QCResponse {
 }
 
 type Query {
-    listInventories: [Inventory!]! @all(model: "App\\Models\\Inventory")
-    detailInventory(id: ID! @eq): Inventory @find(model: "App\\Models\\Inventory")
+    # Gunakan nama "inventories" dan "inventory" agar standar
+    inventories: [Inventory!]! @all(model: "App\\Models\\Inventory")
+    inventory(id: ID! @eq): Inventory @find(model: "App\\Models\\Inventory")
 }
 
 type Mutation {
